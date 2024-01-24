@@ -18,18 +18,29 @@
                 <a class="navbar-brand" href="#">Agendamiento</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon" id="canasta"></span>
-                    <div id="numero"></div>
+                    <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="offcanvas offcanvas-end" id="agregados" tabindex="-1" id="offcanvasNavbar"
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
                     aria-labelledby="offcanvasNavbarLabel">
                     <div class="offcanvas-header">
                         <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Tu agenda</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
-                    <div class="catalogo">
-                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <div id="cardAgenda">
+                                <ul id="listaCarrito" class="list-group">
+                                    <!-- Aquí se mostrarán los elementos del carrito -->
+                                </ul>
+                                <div id="totalCarrito" class="mt-2"></div>
+                                <button onclick="finalizarAgendamiento()">Finalizar Agendamiento</button>
 
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </nav>
     </header>
 
     <main>
@@ -38,50 +49,44 @@
         <br>
         <br>
         <div class="cards">
-            <div class="card" id="card" style="width: 18rem;">
+            <div class="card" id="card1" style="width: 18rem;">
                 <img src="./recursos/color.png" class="card-img-top" alt="fotografia uñas">
                 <div class="card-body">
                     <h5 class="card-title">Esmaltado permanente</h5>
                     <p class="card-text">Esmaltado mas servicio de manicure completa (Limpieza de cutículas, limado y
                         forma
                         de uñas, hidratación y exfoliación de cutículas y manos).</p>
-                    <a href="#" id="botonAgregar" class="btn btn-primary 2">Agregar</a>
+                    <a href="#" id="botonAgregar 1" class="btn btn-primary 2" onclick="agregarAlCarrito(2)">Agregar</a>
                 </div>
             </div>
 
-            <div class="card" style="width: 18rem;">
+
+            <div class="card" id="card2" style="width: 18rem;">
                 <img src="./recursos/creatividad.png" class="card-img-top" alt="fotografia creatividad">
                 <div class="card-body">
                     <h5 class="card-title">Retiro</h5>
                     <p class="card-text">Retiro de esmaltado permanente hecho por MangoNails o en otro lugar, para
                         recambio
                         de esmaltado o solo retiro.</p>
-                    <a href="#" id="botonAgregar" class="btn btn-primary 3">Agregar</a>
+                    <a href="#" id="botonAgregar 2" class="btn btn-primary 3" onclick="agregarAlCarrito(3)">Agregar</a>
                 </div>
             </div>
-            <div class="card" style="width: 18rem;">
+
+            <div class="card" id="card3" style="width: 18rem;">
                 <img src="./recursos/diseño.png" class="card-img-top" alt="fotografia diseños">
                 <div class="card-body">
                     <h5 class="card-title">Manicura</h5>
                     <p class="card-text">Solo servicio de manicure completa (Limpieza de cutículas, limado y forma de
                         uñas,
                         hidratación y exfoliación de cutículas y manos).</p>
-                    <a href="#" id="botonAgregar" class="btn btn-primary 1">Agregar</a>
+                    <a href="#" id="botonAgregar 3" class="btn btn-primary 1" onclick="agregarAlCarrito(1)">Agregar</a>
                 </div>
             </div>
-        </div>
+            </div>
 
     </main>
 
-    <div id="cardAgenda">
-        <div class="informacionAgenda" id="informacionAgenda">
-            <h2>Canasta</h2>
-            <p class="x" id="x">x</p>
-        </div>
-        <div class="serviciosAgenda" id="serviciosAgenda"></div>
-        <div class="total" id="total"></div>
-        <button>Finalizar compra</button>
-    </div>
+
     <footer>
 
     </footer>
