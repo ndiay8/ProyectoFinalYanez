@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="./estilo.css">
-    <title>ProyectoJS</title>
+    <title>Tu Agenda</title>
 </head>
 
 <body>
@@ -19,6 +19,7 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
+                    <div id="numerito" class="diseñoNumero"></div>
                 </button>
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
                     aria-labelledby="offcanvasNavbarLabel">
@@ -30,24 +31,66 @@
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <div id="cardAgenda">
                                 <ul id="listaCarrito" class="list-group">
-                                    <!-- Aquí se mostrarán los elementos del carrito -->
+                                    <!-- Aquí se muestran los elementos del carrito -->
                                 </ul>
                                 <div id="totalCarrito" class="mt-2"></div>
-                                <button onclick="finalizarAgendamiento()">Finalizar Agendamiento</button>
+                                <button class="botonFinalizar" onclick="finalizarAgendamiento()">Siguiente</button>
+                                <div id="formularioContenedor" style="display: none;">
+                                    <h2>Número de celular</h2>
+                                    <input type="tel" id="telefono">
+                                    <div id="horarioBox">
+                                        <h2>Selecciona un Horario</h2>
+                                        <label>
+                                            <input type="radio" name="horario" value="11am-2pm"> 11:00 AM - 2:00 PM
+                                        </label>
+                                        <br>
+                                        <label>
+                                            <input type="radio" name="horario" value="3pm-6pm"> 3:00 PM - 6:00 PM
+                                        </label>
+                                        <br>
+                                        <label>
+                                            <input type="radio" name="horario" value="6pm-9pm"> 6:00 PM - 9:00 PM
+                                        </label>
+                                        <!-- <button onclick="guardarHorario()">Guardar Horario</button> -->
+                                        <br>
+                                        <h2>Días:</h2>
+                                        <label>
+                                            <input type="radio" name="seleccion" value="lunes"> Lunes
+                                        </label>
+                                        <br>
+                                        <label>
+                                            <input type="radio" name="seleccion" value="martes"> Martes
+                                        </label>
+                                        <br>
+                                        <label>
+                                            <input type="radio" name="seleccion" value="miércoles"> Miércoles
+                                        </label>
+                                        <br>
+                                        <label>
+                                            <input type="radio" name="seleccion" value="jueves"> Jueves
+                                        </label>
+                                        <br>
+                                        <label>
+                                            <input type="radio" name="seleccion" value="viernes"> Viernes
+                                        </label>
+                                        <br>
+                                        <label>
+                                            <input type="radio" name="seleccion" value="sábado"> Sábado
+                                        </label>
+                                        <br>
+                                        <!-- <button onclick="guardarSeleccion()">Guardar Selección</button> -->
+                                    </div>
 
+                                    <button onclick="procesarEntrada()" class="btn">Finalizar Agendamiento</button>
+                                </div>
                         </ul>
-
                     </div>
                 </div>
             </div>
         </nav>
     </header>
 
-    <main>
-        <!-- el br solo ira hasta que haga mi css -->
-        <br>
-        <br>
-        <br>
+    <main class="main">
         <div class="cards">
             <div class="card" id="card1" style="width: 18rem;">
                 <img src="./recursos/color.png" class="card-img-top" alt="fotografia uñas">
@@ -56,7 +99,7 @@
                     <p class="card-text">Esmaltado mas servicio de manicure completa (Limpieza de cutículas, limado y
                         forma
                         de uñas, hidratación y exfoliación de cutículas y manos).</p>
-                    <a href="#" id="botonAgregar 1" class="btn btn-primary 2" onclick="agregarAlCarrito(2)">Agregar</a>
+                    <a href="#" id="btn btn-primary" class="btn btn-primary 2" onclick="agregarAlCarrito('Esmaltado Permanente')">Agregar</a>
                 </div>
             </div>
 
@@ -68,7 +111,7 @@
                     <p class="card-text">Retiro de esmaltado permanente hecho por MangoNails o en otro lugar, para
                         recambio
                         de esmaltado o solo retiro.</p>
-                    <a href="#" id="botonAgregar 2" class="btn btn-primary 3" onclick="agregarAlCarrito(3)">Agregar</a>
+                    <a href="#" id="btn btn-primary" class="btn btn-primary 3" onclick="agregarAlCarrito('Retiro')">Agregar</a>
                 </div>
             </div>
 
@@ -79,10 +122,12 @@
                     <p class="card-text">Solo servicio de manicure completa (Limpieza de cutículas, limado y forma de
                         uñas,
                         hidratación y exfoliación de cutículas y manos).</p>
-                    <a href="#" id="botonAgregar 3" class="btn btn-primary 1" onclick="agregarAlCarrito(1)">Agregar</a>
+                    <a href="#" id="btn btn-primary" class="btn btn-primary 1" onclick="agregarAlCarrito('Manicura')">Agregar</a>
                 </div>
             </div>
-            </div>
+        </div>
+
+        <!-- random -->
 
     </main>
 

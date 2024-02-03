@@ -1,3 +1,9 @@
+
+//metodo de solicitud de ingreso
+let nombre = prompt("ingresa tu nombre y apellido")
+function ingreso() {
+    console.log(nombre + " ha ingresado")
+}
 //Ingreso a al sitio
 let edad = prompt("Ingresa tu edad")
 let edadNumerica = parseInt(edad)
@@ -11,9 +17,12 @@ if (isNaN(edadNumerica)) {
         break
     }
 }
+
+// aqui viene el menu
+
 else {
     if (edadNumerica >= 18) {
-        alert("Bienvenid@")
+        alert("Bienvenid@ " + nombre)
         console.log("ingreso exitoso")
         ingreso()
 
@@ -44,68 +53,125 @@ else {
 
         const agenda = []
 
-        alert("Bienvenid@ a la agenda " + agenda)
         agenda.map((p) => {
             console.log(p)
         }
         )
+
+        //este es el carrito/agenda
+
+        const carrito = [];
+
+        function agregarAlCarrito(agregarAlCarrito) {
+            const producto = obtenerProductoPorId(agregarAlCarrito);
+            carrito.push(producto);
+            actualizarCarrito();
+        }
+
+        function obtenerProductoPorId(card1) {
+            return { id: (card1), nombre: `Servicio ${card1}`, tiempo: 120 }
+           
+
+        }
+        function obtenerProductoPorId(card2) {
+
+            return { id: (card2), nombre: `Servicio ${card2}`, tiempo: 60 }
+         
+
+        }
+        function obtenerProductoPorId(card3) {
+            return { id: (card3), nombre: `Servicio ${card3}`, tiempo: 60 }
+
+        }
+        
+
+        function actualizarCarrito() {
+            const listaCarrito = document.getElementById('listaCarrito');
+            const totalCarrito = document.getElementById('totalCarrito');
+
+            listaCarrito.innerHTML = '';
+            carrito.forEach((producto, index) => {
+                const li = document.createElement('li');
+                li.className = 'list-group-item';
+                li.textContent = `${producto.nombre} - ${producto.tiempo}`;
+                listaCarrito.appendChild(li);
+
+                const btnEliminar = document.createElement('button');
+                btnEliminar.className = 'btn btn-danger btn-sm float-end';
+                btnEliminar.textContent = 'Eliminar';
+                btnEliminar.addEventListener('click', () => eliminarProducto(index));
+
+                li.appendChild(btnEliminar);
+                listaCarrito.appendChild(li);
+            });
+
+            const total = carrito.reduce((total, producto) => total + producto.tiempo, 0);
+            totalCarrito.textContent = `Total: ${total}  minutos`;
+
+            numerito.innerHTML = carrito.length
+            numerito.classList.add("diseñoNumero")
+            return carrito
+        }
+
+        function eliminarProducto(index) {
+            carrito.splice(index, 1);
+            actualizarCarrito();
+        }
+
+        function finalizarAgendamiento() {
+
+            document.getElementById('formularioContenedor').style.display = 'block';
+        }
+
+        function procesarEntrada() {
+
+            const horarios = document.getElementsByName('horario');
+            let horarioSeleccionado = null;
+
+            for (const horario of horarios) {
+                if (horario.checked) {
+                    horarioSeleccionado = horario.value;
+                    break;
+                }
+                else {
+                    alert('Por favor, selecciona una opción.');
+                }
+            }
+
+            const opciones = document.getElementsByName('seleccion');
+            let seleccionado = null;
+
+            for (const opcion of opciones) {
+                if (opcion.checked) {
+                    seleccionado = opcion.value;
+                    break;
+                }
+                else {
+                    alert('Por favor, selecciona una opción.');
+                }
+
+            }
+
+            const telefono = document.getElementById('telefono').value;
+            if (telefono.trim() !== '') {
+                alert('Tu hora ya fue solicitada ' + nombre + ', entre las ' + horarioSeleccionado + ' el día ' + seleccionado + '!');
+                document.getElementById('formularioContenedor').style.display = 'none';
+            } else {
+                alert('Por favor, introduce un nombre válido.');
+            }
+
+
+            console.log('Agendamiento finalizado:', nombre, telefono, horarioSeleccionado, seleccionado, carrito,);
+        }
+
     }
+
+    //si no cumple requisitos mostrara esto
     else {
         alert("No cumples aún con la edad")
         console.log("ingreso fallido")
-        //si no cumple requisitos te mostrara esto
         document.body.innerHTML = "Lo siento, no cumples con la edad requerida para poder agendar"
     }
 }
-//metodo de solicitud de ingreso
-function ingreso() {
-    let nombre = prompt("ingresa tu nombre y apellido")
-    console.log(nombre + " ha ingresado")
-}
 
-//carrito
-const carrito = [];
-
-function agregarAlCarrito(agregarAlCarrito) {
-    const producto = obtenerProductoPorId(agregarAlCarrito);
-    carrito.push(producto);
-    actualizarCarrito();
-}
-
-function obtenerProductoPorId(card, card1 ,card2, card3) {
-    return { id: card, nombre: `Servicio ${card}`, precio: 1* card };
-    
-}
-
-function actualizarCarrito() {
-    const listaCarrito = document.getElementById('listaCarrito');
-    const totalCarrito = document.getElementById('totalCarrito');
-
-    listaCarrito.innerHTML = '';
-    carrito.forEach((producto, index)=> {
-        const li = document.createElement('li');
-        li.className = 'list-group-item';
-        li.textContent = `${producto.nombre} - $${producto.precio}`;
-        listaCarrito.appendChild(li);
-
-        const btnEliminar = document.createElement('button');
-        btnEliminar.className = 'btn btn-danger btn-sm float-end';
-        btnEliminar.textContent = 'Eliminar';
-        btnEliminar.addEventListener('click', () => eliminarProducto(index));
-
-        li.appendChild(btnEliminar);
-        listaCarrito.appendChild(li);
-    });
-
-    const total = carrito.reduce((total, producto) => total + producto.precio, 0);
-    totalCarrito.textContent = `Total: $${total}`;
-}
-function eliminarProducto(index) {
-    carrito.splice(index, 1);
-    actualizarCarrito();
-}
-
-function finalizarAgendamiento() {
-    console.log('Agendamiento finalizado:', carrito);
-}
 

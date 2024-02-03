@@ -15,7 +15,8 @@
 }
 .diseñoNumero {
     padding: 10px;
-    background-color: red;
+    color: aliceblue;
+    background-color: rgb(255, 0, 140);
     border-radius: 100%;
     width: 20px;
     height: 20px;
@@ -29,3 +30,43 @@
     justify-content: center;
     align-items: center;
 }
+.botonFinalizar{
+    color: aliceblue;
+ padding: 10px;
+    text-decoration: none;
+    border: 0;
+    border-radius: 5px;
+    background-color: rgb(255, 0, 140);
+}
+
+.btn {
+    background-color: rgb(255, 0, 140);
+    color: aliceblue;
+    border: 0;
+}
+
+.navbar-brand{
+    color: rgb(255, 0, 140);
+  font-size: 40px;
+}
+.main{
+    margin-top: 86px;
+}
+
+.navbar-toggler{
+   padding-bottom: 5px;
+   border: 0;
+}
+
+h2{
+    font-size: 25px;
+    color: rgb(255, 0, 140);
+}
+#horarioBox {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
