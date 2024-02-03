@@ -1,18 +1,32 @@
 * {
     padding: 0;
     margin: 0;
-    font-family: "outfit";
+    /* font-family: "outfit"; */
+}
+
+body {
+    color: rgb(255, 0, 140);
+    font-size: 20px;
+    text-align: center;
+    margin-top: 40px;
 }
 
 .navbar-toggler-icon {
     background-image: url(./recursos/pngwing.com.png)
 }
 
-.cards{
+.cards {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
 }
+
+.card {
+    padding: 10px;
+    border-color: rgb(255, 0, 140);
+    ;
+}
+
 .diseñoNumero {
     padding: 10px;
     color: aliceblue;
@@ -30,9 +44,10 @@
     justify-content: center;
     align-items: center;
 }
-.botonFinalizar{
+
+.botonFinalizar {
     color: aliceblue;
- padding: 10px;
+    padding: 10px;
     text-decoration: none;
     border: 0;
     border-radius: 5px;
@@ -45,23 +60,41 @@
     border: 0;
 }
 
-.navbar-brand{
+.navbar-brand {
     color: rgb(255, 0, 140);
-  font-size: 40px;
+    font-size: 40px;
 }
-.main{
+
+.main {
     margin-top: 86px;
 }
 
-.navbar-toggler{
-   padding-bottom: 5px;
-   border: 0;
+.navbar-toggler {
+    padding-bottom: 5px;
+    border: 0;
 }
 
-h2{
+h2 {
     font-size: 25px;
     color: rgb(255, 0, 140);
 }
+
+h5 {
+    font-size: 25px;
+    color: rgb(255, 0, 140);
+}
+
+.mt-2 {
+    margin-bottom: 10px;
+}
+
+input {
+    border-radius: 30px;
+    border-style: dashed;
+    border-color: hotpink;
+
+}
+
 #horarioBox {
     width: 300px;
     padding: 20px;
@@ -69,4 +102,34 @@ h2{
     border-radius: 8px;
     margin-top: 10px;
     margin-bottom: 10px;
-  }
+}
+
+.card-text {
+    font-size: 16px;
+}
+
+.swal2-icon .swal2-success {
+    background-color: rgb(255, 0, 140);
+}
+
+.swal2-success-fix {
+    background-color: rgb(255, 0, 140);
+}
+
+.swal2-success-line-long {
+    background-color: rgb(255, 0, 140);
+}
+
+.swal2-success-line-tip {
+    background-color: rgb(255, 0, 140);
+}
+
+.swal2-title {
+    color: rgb(255, 0, 140);
+}
+div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
+    background-color: rgb(255, 0, 140);
+}
+div:where(.swal2-icon).swal2-success [class^=swal2-success-line] {
+    background-color: rgb(255, 0, 140);
+}

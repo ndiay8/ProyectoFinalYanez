@@ -1,3 +1,4 @@
+const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
 //metodo de solicitud de ingreso
 let nombre = prompt("ingresa tu nombre y apellido")
@@ -70,20 +71,20 @@ else {
 
         function obtenerProductoPorId(card1) {
             return { id: (card1), nombre: `Servicio ${card1}`, tiempo: 120 }
-           
+
 
         }
         function obtenerProductoPorId(card2) {
 
             return { id: (card2), nombre: `Servicio ${card2}`, tiempo: 60 }
-         
+
 
         }
         function obtenerProductoPorId(card3) {
             return { id: (card3), nombre: `Servicio ${card3}`, tiempo: 60 }
 
         }
-        
+
 
         function actualizarCarrito() {
             const listaCarrito = document.getElementById('listaCarrito');
@@ -107,10 +108,12 @@ else {
 
             const total = carrito.reduce((total, producto) => total + producto.tiempo, 0);
             totalCarrito.textContent = `Total: ${total}  minutos`;
-
+            localStorage.setItem('carrito', JSON.stringify(carrito));
             numerito.innerHTML = carrito.length
             numerito.classList.add("diseñoNumero")
             return carrito
+
+
         }
 
         function eliminarProducto(index) {
@@ -121,6 +124,7 @@ else {
         function finalizarAgendamiento() {
 
             document.getElementById('formularioContenedor').style.display = 'block';
+            console.log('Carrito almacenado:', JSON.parse(localStorage.getItem('carrito')));
         }
 
         function procesarEntrada() {
@@ -154,7 +158,12 @@ else {
 
             const telefono = document.getElementById('telefono').value;
             if (telefono.trim() !== '') {
-                alert('Tu hora ya fue solicitada ' + nombre + ', entre las ' + horarioSeleccionado + ' el día ' + seleccionado + '!');
+                Swal.fire({
+                    title: "Estamos OK!",
+                    text: ('Tu hora ya fue solicitada ' + nombre + ', entre las ' + horarioSeleccionado + ' del día ' + seleccionado + '. Nos estaremos poniendo en contacto contigo en lo pronto!'),
+                    icon: "success"
+                  });
+                // alert('Tu hora ya fue solicitada ' + nombre + ', entre las ' + horarioSeleccionado + ' del día ' + seleccionado + ', Nos estaremos poniendo en contacto contigo!');
                 document.getElementById('formularioContenedor').style.display = 'none';
             } else {
                 alert('Por favor, introduce un nombre válido.');
