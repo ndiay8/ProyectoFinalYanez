@@ -1,4 +1,6 @@
+
 const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
 
 //metodo de solicitud de ingreso
 let nombre = prompt("ingresa tu nombre y apellido")
@@ -108,7 +110,7 @@ else {
 
             const total = carrito.reduce((total, producto) => total + producto.tiempo, 0);
             totalCarrito.textContent = `Total: ${total}  minutos`;
-            localStorage.setItem('carrito', JSON.stringify(carrito));
+            // localStorage.setItem('carrito', JSON.stringify(carrito));
             numerito.innerHTML = carrito.length
             numerito.classList.add("diseñoNumero")
             return carrito
@@ -124,7 +126,7 @@ else {
         function finalizarAgendamiento() {
 
             document.getElementById('formularioContenedor').style.display = 'block';
-            console.log('Carrito almacenado:', JSON.parse(localStorage.getItem('carrito')));
+            // console.log('Carrito almacenado:', JSON.parse(localStorage.getItem('carrito')));
         }
 
         function procesarEntrada() {
@@ -162,19 +164,22 @@ else {
                     title: "Estamos OK!",
                     text: ('Tu hora ya fue solicitada ' + nombre + ', entre las ' + horarioSeleccionado + ' del día ' + seleccionado + '. Nos estaremos poniendo en contacto contigo en lo pronto!'),
                     icon: "success"
-                  });
+                });
                 // alert('Tu hora ya fue solicitada ' + nombre + ', entre las ' + horarioSeleccionado + ' del día ' + seleccionado + ', Nos estaremos poniendo en contacto contigo!');
                 document.getElementById('formularioContenedor').style.display = 'none';
             } else {
                 alert('Por favor, introduce un nombre válido.');
             }
-
-
-            console.log('Agendamiento finalizado:', nombre, telefono, horarioSeleccionado, seleccionado, carrito,);
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+            
+            console.log('Carrito almacenado:', JSON.parse(localStorage.getItem('carrito')));
+            console.log('Agendamiento finalizado:', nombre, telefono, horarioSeleccionado, seleccionado, carrito);
+            
         }
 
+        
     }
-
+    
     //si no cumple requisitos mostrara esto
     else {
         alert("No cumples aún con la edad")
@@ -183,4 +188,33 @@ else {
     }
 }
 
+//se intento agregar firebase
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCOuzMsk2JCxxO65viU8ZM8AHDki9OqGL0",
+  authDomain: "proyectonidiayanez.firebaseapp.com",
+  projectId: "proyectonidiayanez",
+  storageBucket: "proyectonidiayanez.appspot.com",
+  messagingSenderId: "405271544592",
+  appId: "1:405271544592:web:525723ac3d3d89ff2e1b95",
+  measurementId: "G-Y53XD2J1KT"
+};
+
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+const guardarObjetoEnFirestore = async (objeto) => {
+    try {
+      const docRef = await addDoc(collection(db, "orders"), objeto);
+      console.log("Documento almacenado con ID:", docRef.id);
+    } catch (error) {
+      console.error("Error al almacenar el documento:", error);
+    }
+  }
+  const boton = document.getElementById("button-enviar");
+boton.addEventListener("click", () => {
+  guardarObjetoEnFirestore(objetoEjemplo);
+});
