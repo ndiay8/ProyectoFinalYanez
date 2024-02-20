@@ -40,10 +40,10 @@ else {
         console.log(servicio1)
 
         let esmaltado1 = "Esmaltado Permanente";
-        let duracion2 = 120;
+        let duracion2 = 60;
         let boton2 = document.getElementsByClassName("btn btn-primary 2");
 
-        const servicio2 = { servicio: "Esmaltado Permanente", duracion: 120, boton: document.getElementsByClassName("btn btn-primary 2") }
+        const servicio2 = { servicio: "Esmaltado Permanente", duracion: 60, boton: document.getElementsByClassName("btn btn-primary 2") }
 
         console.log(servicio2)
 
@@ -174,7 +174,7 @@ else {
             
             console.log('Carrito almacenado:', JSON.parse(localStorage.getItem('carrito')));
             console.log('Agendamiento finalizado:', nombre, telefono, horarioSeleccionado, seleccionado, carrito);
-            
+           
         }
 
         
@@ -186,35 +186,6 @@ else {
         console.log("ingreso fallido")
         document.body.innerHTML = "Lo siento, no cumples con la edad requerida para poder agendar"
     }
+    
 }
 
-//se intento agregar firebase
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-
-
-const firebaseConfig = {
-  apiKey: "AIzaSyCOuzMsk2JCxxO65viU8ZM8AHDki9OqGL0",
-  authDomain: "proyectonidiayanez.firebaseapp.com",
-  projectId: "proyectonidiayanez",
-  storageBucket: "proyectonidiayanez.appspot.com",
-  messagingSenderId: "405271544592",
-  appId: "1:405271544592:web:525723ac3d3d89ff2e1b95",
-  measurementId: "G-Y53XD2J1KT"
-};
-
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-
-const guardarObjetoEnFirestore = async (objeto) => {
-    try {
-      const docRef = await addDoc(collection(db, "orders"), objeto);
-      console.log("Documento almacenado con ID:", docRef.id);
-    } catch (error) {
-      console.error("Error al almacenar el documento:", error);
-    }
-  }
-  const boton = document.getElementById("button-enviar");
-boton.addEventListener("click", () => {
-  guardarObjetoEnFirestore(objetoEjemplo);
-});
