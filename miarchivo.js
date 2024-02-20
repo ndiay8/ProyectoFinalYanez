@@ -144,7 +144,7 @@ else {
                     break;
                 }
                 else {
-                    alert('Por favor, selecciona una opción.');
+                
                 }
             }
 
@@ -157,7 +157,7 @@ else {
                     break;
                 }
                 else {
-                    alert('Por favor, selecciona una opción.');
+                    
                 }
 
             }
