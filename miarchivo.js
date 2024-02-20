@@ -131,6 +131,10 @@ else {
 
         function procesarEntrada() {
 
+            const agendamiento = {};
+            const agendamientoJSON = JSON.stringify(agendamiento);
+            localStorage.setItem('agendamiento', agendamientoJSON);
+
             const horarios = document.getElementsByName('horario');
             let horarioSeleccionado = null;
 
@@ -170,7 +174,6 @@ else {
             } else {
                 alert('Por favor, introduce un nombre válido.');
             }
-            localStorage.setItem('carrito', JSON.stringify(carrito));
             
             console.log('Carrito almacenado:', JSON.parse(localStorage.getItem('carrito')));
             console.log('Agendamiento finalizado:', nombre, telefono, horarioSeleccionado, seleccionado, carrito);
